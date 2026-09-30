@@ -1,0 +1,7 @@
+node_modules/
+dist/
+pages/
+lib/
+.next/
+next-env.d.ts
+*.cpuprofile

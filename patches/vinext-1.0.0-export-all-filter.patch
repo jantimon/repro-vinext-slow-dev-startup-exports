@@ -1,0 +1,11 @@
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -3373,7 +3373,7 @@
+ 			transform: {
+ 				filter: {
+ 					id: { exclude: VIRTUAL_MODULE_ID_RE },
+-					code: /\bexport\b[\s\S]*\*/
++					code: /\bexport\s*[*/]/
+ 				},
+ 				handler(code, id) {
+ 					if (this.environment?.name !== "client") return null;
