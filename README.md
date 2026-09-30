@@ -15,6 +15,7 @@ With the [one-line patch](patches/vinext-1.0.0-export-all-filter.patch) the requ
 npm i
 npm run compare    # about 2 minutes
 npm run regex      # the regex alone, no Vite
+npm run fuzz       # the proposed regex against hasExportAllCandidate
 ```
 
 `compare` generates the app, then starts the dev server 12 times: one warm-up and 5 measured runs for each variant, alternating.
@@ -75,7 +76,7 @@ A `*` near the end of the file makes the match fast. A `/** license */` header a
 The filter only decides whether the handler runs. The handler then calls `hasExportAllCandidate`, which accepts `export`, then whitespace and comments, then `*`.
 So after `export` and optional whitespace, the next character is `*` or the `/` that starts a comment.
 The new regex matches every input `hasExportAllCandidate` accepts, and it only looks at the characters right after each `export`.
-A fuzz run of 500,000 random strings found no input where `hasExportAllCandidate` returns true and the new regex does not match.
+A fuzz run (`npm run fuzz`) of 500,000 random strings found no input where `hasExportAllCandidate` returns true and the new regex does not match.
 
 [`scripts/patch.mjs`](scripts/patch.mjs) applies the change to the published `dist/index.js` for `compare`, and restores the original after.
 

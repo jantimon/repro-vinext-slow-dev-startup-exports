@@ -8,7 +8,8 @@
     "compare": "node scripts/generate.mjs && node scripts/compare.mjs",
     "regex": "node scripts/regex-bench.mjs",
     "patch": "node scripts/patch.mjs apply",
-    "unpatch": "node scripts/patch.mjs revert"
+    "unpatch": "node scripts/patch.mjs revert",
+    "fuzz": "node scripts/fuzz-filter.mjs"
   },
   "dependencies": {
     "react": "19.2.8",
