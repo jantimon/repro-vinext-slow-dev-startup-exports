@@ -1,5 +1,7 @@
 # vinext dev: the `export *` filter regex is quadratic
 
+Issue: [cloudflare/vinext#3605](https://github.com/cloudflare/vinext/issues/3605)
+
 **vinext 1.0.0 runs `/\bexport\b[\s\S]*\*/` over every module in dev, in the client and the SSR environment.**
 When a module has many `export`s and no `*` after them, each `export` scans to the end of the file and back.
 The cost grows with the square of the module size.
